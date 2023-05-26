@@ -1,0 +1,1 @@
+"The Mark of the Immature Man Is That He Wants To Die Nobly for a Cause, While the Mark of the Mature Man Is That He Wants To Live Humbly for One"
