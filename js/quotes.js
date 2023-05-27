@@ -32,11 +32,59 @@ const quotes=[
         author:"Michael Shellenberger",
     },
     {
-        quote:"",
-        author:"",
+        quote:"You cannot know where your people are going if you don't know where your people have been.",
+        author:"Forrest Carter",
     },
     {
-        quote:"",
-        author:"",
+        quote:"And, when you want something, all the universe conspires in helping you to achieve it.",
+        author:"Paulo Coelho",
+    },
+    {
+        quote:"One is loved because one is loved. No reason is needed for loving.",
+        author:"Paulo Coelho",
+    },
+    {
+        quote:"When I had nothing to lose, I had everything. When I stopped being who I am, I found myself.",
+        author:"Paulo Coelho",
+    },
+    {
+        quote:"Stay hungry. Stay foolish.",
+        author:"Steve Jobs",
+    },
+    {
+        quote:"In nature nothing exists alone.",
+        author:"Rachel Carson",
+    },
+    {
+        quote:"If I have seen further it is by standing on the shoulders of Giants.",
+        author:"Isaac Newton",
+    },
+    {
+        quote:"One, remember to look up at the stars and not down at your feet. Two, never give up work. Work gives you meaning and purpose and life is empty without it. Three, if you are lucky enough to find love, remember it is there and don't throw it away",
+        author:"Stephen Hawking",
+    },
+    {
+        quote:"If you judge people, you have no time to love them.",
+        author:"Mother Teresa",
+    },
+    {
+        quote:"Everything you can imagine is real.",
+        author:"Pablo Picasso",
+    },
+    {
+        quote:"If anything is certain, it is that I myself am not a Marxist.",
+        author:"Karl Marx",
+    },
+    {
+        quote:"Humans are allergic to change. They love to say, 'We've always done it this way.' I try to fight that. That's why I have a clock on my wall that runs counter-clockwise.",
+        author:"Grace Hopper",
+    },
+    {
+        quote:"Sometimes it is the people no one can imagine anything of who do the things no one can imagine.",
+        author:"Alan Turing",
+    },
+    {
+        quote:"I have not failed. I've just found 10,000 ways that won't work.",
+        author:"Thomas A. Edison",
     },
 ]
