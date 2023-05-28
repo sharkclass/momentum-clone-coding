@@ -87,4 +87,16 @@ const quotes=[
         quote:"I have not failed. I've just found 10,000 ways that won't work.",
         author:"Thomas A. Edison",
     },
+    {
+        quote:"When I was a kid, I was always going to bed creating a story and that was the birth of filmmaking for me. I would like going to the dream-state by telling the story to someone else in my mind. That was my imaginary friend; it was an imaginary audience listening to my story.",
+        author:"Denis Villeneuve",
+    },
 ]
+
+const quote=document.querySelector("#quote span:first-child");
+const author=document.querySelector("#quote span:last-child");
+
+const randomQuote=quotes[Math.floor(Math.random()*quotes.length)]//Math.floor()==내림
+
+quote.innerText=randomQuote.quote;
+author.innerText=randomQuote.author;
