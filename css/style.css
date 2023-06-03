@@ -2,12 +2,27 @@
     display:none;/*display:none-->remove element and also its space | visibility:none-->remove element but leave its space */
 }
 
+html, body{
+}
+
 body {
-    margin:0;
-    height:100vh;
-    width: 100vw;
-    z-index: -1;
+    /*
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    */
+}
+
+#upper-container{
+    box-sizing: border-box;
+    height:34vh;
+    padding:1vw 1vw;
+    background-color: var(--basic-ocean);
+}
+
+#downside-container{
+    box-sizing: border-box;
+    height:66vh;
+    padding:1vw 1vw;
+    background-color: var(--basic-light-sand);
 }
