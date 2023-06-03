@@ -7,9 +7,13 @@ const images=[
 
 const randomImage=images[Math.floor(Math.random()*images.length)];//Math.floor()==내림
 
-const bgImage=document.createElement("img");
+//const bgImage=document.createElement("div");
+const body=document.querySelector("body");
 
-bgImage.src=`img/${randomImage}`;
-bgImage.id="bg-image";
+//bgImage.src=`img/${randomImage}`;
+//bgImage.id="bg-image";
+//bgImage.style.backgroundImage=`url(img/${randomImage})`;
+body.style.backgroundImage=`url(img/${randomImage})`;
 
-document.body.appendChild(bgImage);
+
+//document.body.appendChild(bgImage);
