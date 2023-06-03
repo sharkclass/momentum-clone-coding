@@ -7,15 +7,15 @@ const images=[
 ];
 
 const randomImage=images[Math.floor(Math.random()*images.length)];//Math.floor()==내림
+
+//randomImage를 body의 background-image로 지정하는 방식
 const body=document.querySelector("body");
-body.style.backgroundImage=`url(img/${randomImage})`;
+body.style.backgroundImage=`url(img/pictures/${randomImage})`;
 */
 
+//img element를 만드는 방식
 //const bgImage=document.createElement("div");
-
 //bgImage.src=`img/${randomImage}`;
 //bgImage.id="bg-image";
-//bgImage.style.backgroundImage=`url(img/${randomImage})`;
-
-
+//bgImage.style.backgroundImage=`url(img/pictures/${randomImage})`;
 //document.body.appendChild(bgImage);
