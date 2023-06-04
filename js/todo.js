@@ -3,6 +3,7 @@ const toDoInput=toDoForm.querySelector("input");
 const toDoList=document.querySelector("#todo-list");    
 
 const TODOS_KEY="todos";
+const HIDDEN_CLASSNAME="hidden";
 
 let toDos=[];
 

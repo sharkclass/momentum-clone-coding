@@ -13,16 +13,3 @@ body {
     */
 }
 
-#upper-container{
-    box-sizing: border-box;
-    height:34vh;
-    padding:1vw 1vw;
-    background-color: var(--basic-ocean);
-}
-
-#downside-container{
-    box-sizing: border-box;
-    height:66vh;
-    padding:1vw 1vw;
-    background-color: var(--basic-light-sand);
-}

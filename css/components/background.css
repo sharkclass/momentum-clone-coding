@@ -1,0 +1,19 @@
+#upper-container{
+    box-sizing: border-box;
+    padding:1vw 1vw;
+    background-color: var(--basic-ocean);
+}
+
+#downside-container{
+    box-sizing: border-box;
+    padding:1vw 1vw;
+    background-color: var(--basic-light-sand);
+}
+
+.height_one-third{
+    height:34vh;
+}
+
+.height_two-third{
+    height:66vh;
+}
