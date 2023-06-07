@@ -1,15 +1,3 @@
 .hidden{
-    display:none;/*display:none-->remove element and also its space | visibility:none-->remove element but leave its space */
+    visibility: hidden ;/*display:none-->remove element and also its space | visibility:none-->remove element but leave its space */
 }
-
-html, body{
-}
-
-body {
-    /*
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    */
-}
-

@@ -1,6 +1,4 @@
 #clock{
     color:var(--basic-green);
     font-size:10vw;
-    display: flex;
-    justify-content: center;
 }

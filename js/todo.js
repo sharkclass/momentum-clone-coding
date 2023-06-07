@@ -3,7 +3,6 @@ const toDoInput=toDoForm.querySelector("input");
 const toDoList=document.querySelector("#todo-list");    
 
 const TODOS_KEY="todos";
-const HIDDEN_CLASSNAME="hidden";
 
 let toDos=[];
 
@@ -29,6 +28,7 @@ function paintToDo(newToDoObj){
     li.appendChild(span);
     li.appendChild(button);
     toDoList.appendChild(li);
+    span.addEventListener("click", completeToDo);
 }
 
 function handleToDoSubmit(event){
@@ -56,4 +56,11 @@ if(savedToDos !=null){
     const parsedToDos=JSON.parse(savedToDos);//string을 array로 바꾸어줌
     toDos=parsedToDos;
     parsedToDos.forEach(paintToDo);
+}
+
+function completeToDo(event){
+    const span=event.target;
+    span.classList.toggle("completed");
+
+    console.log("hi");
 }
