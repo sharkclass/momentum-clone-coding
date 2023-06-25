@@ -3,6 +3,7 @@ const toDoInput=toDoForm.querySelector("input");
 const toDoList=document.querySelector("#todo-list");    
 
 const TODOS_KEY="todos";
+const COMPLETED="completed"
 
 let toDos=[];
 
@@ -29,6 +30,10 @@ function paintToDo(newToDoObj){
     li.appendChild(button);
     toDoList.appendChild(li);
     span.addEventListener("click", completeToDo);
+
+    if(newToDoObj.isCompleted){
+        li.classList.add(COMPLETED);
+    }
 }
 
 function handleToDoSubmit(event){
@@ -37,7 +42,8 @@ function handleToDoSubmit(event){
     toDoInput.value="";
     const newToDoObj={
         text:newToDo,
-        id:Date.now()//생성당시 밀리초를 id로 저장함으로써 각각의 todo를 구분할 수 있
+        id:Date.now(),//생성당시 밀리초를 id로 저장함으로써 각각의 todo를 구분할 수 있
+        isCompleted:false
     };
     toDos.push(newToDoObj);//toDos에 string 대신에 object를 저장함
     paintToDo(newToDoObj);
@@ -46,21 +52,37 @@ function handleToDoSubmit(event){
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
 
-function sayHello(item){ //item은 forEach()가 argument로 보내주는 값으로 array의 각 item임
-    console.log("this is the turn of", item);
-}
-
 const savedToDos=localStorage.getItem(TODOS_KEY);
 
+//새로고침했을 때 localstorage에 있는 todos를 그려줌
 if(savedToDos !=null){
     const parsedToDos=JSON.parse(savedToDos);//string을 array로 바꾸어줌
     toDos=parsedToDos;
     parsedToDos.forEach(paintToDo);
 }
 
-function completeToDo(event){
-    const span=event.target;
-    span.classList.toggle("completed");
+function elementFinderWithId(array,id){
+    for (let step=0;step<array.length;step++){
+        if(array[step].id==id){
+            return step;
+        }
+    }
+}
 
-    console.log("hi");
+function completeToDo(event){
+    const li=event.target.parentElement;
+
+    li.classList.toggle(COMPLETED);
+
+    const orderOfToDo=elementFinderWithId(toDos,li.id);
+    let toDoIsCompleted=toDos[orderOfToDo].isCompleted;
+
+    if (toDoIsCompleted){
+        toDoIsCompleted=false;
+    }
+    else{
+        toDoIsCompleted=true;
+    }
+    toDos[orderOfToDo].isCompleted=toDoIsCompleted;
+    localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
 }
