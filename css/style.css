@@ -1,3 +1,7 @@
 .hidden{
     visibility: hidden ;/*display:none-->remove element and also its space | visibility:none-->remove element but leave its space */
 }
+
+.removed{
+    display: none;
+}

@@ -1,3 +1,7 @@
 li.completed span{
     text-decoration: line-through;
 }
+
+.summarized>li:not(:first-child){
+    display:none;
+}

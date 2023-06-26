@@ -98,5 +98,5 @@ const author=document.querySelector("#quote-container span:last-child");
 
 const randomQuote=quotes[Math.floor(Math.random()*quotes.length)]//Math.floor()==내림
 
-quote.innerText=randomQuote.quote;
+quote.innerText=`"${randomQuote.quote}"`;
 author.innerText=randomQuote.author;
