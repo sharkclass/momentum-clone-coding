@@ -19,7 +19,13 @@
             <span></span>
             <span></span>
         </div>
-        <h2 id="clock" class="hidden">00:00</h2>
+        <h2 id="clock_and_todo" class="hidden">
+            <span id="clock">00:00</span>
+            <form id="todo-form" class="hidden removed">
+                <h2 id="todo_title">To Do</h2>
+                <input required type="text" placeholder="Write a To Do and Press Enter">
+            </form>
+        </h2>
     </div>
 
     <div id="downside-container">
@@ -27,9 +33,6 @@
         <form id="login-form" class="hidden">
             <input required maxlength=15 type="text" placeholder="What is your name?">
             <button>Log In</button>
-        </form>
-        <form id="todo-form" class="hidden">
-            <input required type="text" placeholder="Write a To Do and Press Enter">
         </form>
         <ul id="todo-list" class="hidden summarized"></ul>
         <div id="quote-container" class="hidden">

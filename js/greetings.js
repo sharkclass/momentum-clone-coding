@@ -17,6 +17,7 @@ function onLoginSubmit(event){
     loginForm.classList.add(HIDDEN_CLASSNAME);
 }
 
+//다른 요소들을 등장하게 하는 함수
 function paintGreetings(username){
     flow()
     greeting.classList
@@ -27,7 +28,7 @@ function paintGreetings(username){
     toDoForm.classList.remove(HIDDEN_CLASSNAME);
     toDoList.classList.remove(HIDDEN_CLASSNAME);
     quoteContainer.classList.remove(HIDDEN_CLASSNAME);
-    clock.classList.remove(HIDDEN_CLASSNAME);
+    clockAndToDo.classList.remove(HIDDEN_CLASSNAME);
 }
 
 const savedUsername=localStorage.getItem(USERNAME_KEY);

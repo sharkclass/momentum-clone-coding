@@ -1,4 +1,9 @@
-const clock = document.querySelector("h2#clock");
+const clockAndToDo = document.querySelector("#clock_and_todo");
+const clock=document.querySelector("#clock");
+const toDoTitle=document.querySelector("#todo_title");
+
+const REMOVED="removed";
+const SUMMARIZED="summarized";
 
 function getClock(){
     const date=new Date();
@@ -9,6 +14,26 @@ function getClock(){
     const seconds=String(date.getSeconds()).padStart(2,0);
 
     clock.innerText=(`${hours}:${minutes}`);
+    clock.addEventListener("click",convertToToDoLsit);
+    toDoTitle.addEventListener("click",convertToClock);
+}
+
+function clockConverting(clock){
+
+}
+
+function convertToToDoLsit(){
+    clock.classList.add(REMOVED);
+    toDoForm.classList.remove(REMOVED);
+    toDoList.classList.remove(SUMMARIZED);
+    ebb();
+}
+
+function convertToClock(){
+    clock.classList.remove(REMOVED);
+    toDoForm.classList.add(REMOVED);
+    toDoList.classList.add(SUMMARIZED);
+    flow();
 }
 
 getClock();

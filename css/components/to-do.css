@@ -5,3 +5,8 @@ li.completed span{
 .summarized>li:not(:first-child){
     display:none;
 }
+
+#todo_title{
+    color:var(--basic-green);
+    font-size:10vw;
+}
