@@ -21,6 +21,7 @@ function deleteToDo(event){
 function paintToDo(newToDoObj){
     const li =document.createElement("li");
     li.id=newToDoObj.id;
+    li.classList.add("nonselectable")
     const span=document.createElement("span");
     span.innerText=newToDoObj.text;
     const button=document.createElement("button");
