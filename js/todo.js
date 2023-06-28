@@ -38,22 +38,18 @@ function paintToDo(newToDoObj){
     }
 }
 
-function makeNewToDoObj(newToDo,completed){
-    const newToDoObj={
-        text:newToDo,
-        id:Date.now(),//생성당시 밀리초를 id로 저장함으로써 각각의 todo를 구분할 수 있
-        isCompleted:completed
-    };
-    toDos.push(newToDoObj);//toDos에 string 대신에 object를 저장함
-    paintToDo(newToDoObj);
-    saveToDos();
-}
-
 function handleToDoSubmit(event){
     event.preventDefault();
     const newToDo=toDoInput.value; 
     toDoInput.value="";
-    makeNewToDoObj(newToDo,false);
+    const newToDoObj={
+        text:newToDo,
+        id:Date.now(),//생성당시 밀리초를 id로 저장함으로써 각각의 todo를 구분할 수 있
+        isCompleted:false
+    };
+    toDos.push(newToDoObj);//toDos에 string 대신에 object를 저장함
+    paintToDo(newToDoObj);
+    saveToDos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
