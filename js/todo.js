@@ -4,6 +4,7 @@ const toDoList=document.querySelector("#todo-list");
 
 const TODOS_KEY="todos";
 const COMPLETED="completed"
+const SORTABLE="sortable";
 
 let toDos=[];
 
@@ -21,7 +22,7 @@ function deleteToDo(event){
 function paintToDo(newToDoObj){
     const li =document.createElement("li");
     li.id=newToDoObj.id;
-    li.classList.add("nonselectable")
+    li.classList.add("nonselectable");
     const span=document.createElement("span");
     span.innerText=newToDoObj.text;
     const button=document.createElement("button");
@@ -37,18 +38,22 @@ function paintToDo(newToDoObj){
     }
 }
 
-function handleToDoSubmit(event){
-    event.preventDefault();
-    const newToDo=toDoInput.value; 
-    toDoInput.value="";
+function makeNewToDoObj(newToDo,completed){
     const newToDoObj={
         text:newToDo,
         id:Date.now(),//생성당시 밀리초를 id로 저장함으로써 각각의 todo를 구분할 수 있
-        isCompleted:false
+        isCompleted:completed
     };
     toDos.push(newToDoObj);//toDos에 string 대신에 object를 저장함
     paintToDo(newToDoObj);
     saveToDos();
+}
+
+function handleToDoSubmit(event){
+    event.preventDefault();
+    const newToDo=toDoInput.value; 
+    toDoInput.value="";
+    makeNewToDoObj(newToDo,false);
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
@@ -72,18 +77,22 @@ function elementFinderWithId(array,id){
 
 function completeToDo(event){
     const li=event.target.parentElement;
+    const span=event.target;
 
     li.classList.toggle(COMPLETED);
 
     const orderOfToDo=elementFinderWithId(toDos,li.id);
-    let toDoIsCompleted=toDos[orderOfToDo].isCompleted;
+    const toDo=toDos[orderOfToDo];
 
-    if (toDoIsCompleted){
-        toDoIsCompleted=false;
-    }
-    else{
-        toDoIsCompleted=true;
-    }
-    toDos[orderOfToDo].isCompleted=toDoIsCompleted;
+    toDo.isCompleted=!toDo.isCompleted;
     localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
+
+    makeNewToDoObj(span.innerText,true);
+    deleteToDo(event);
 }
+
+//to do list의 드래그 기능
+
+$(function(){
+    $(".sortable").sortable();
+});
