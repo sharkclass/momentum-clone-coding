@@ -61,12 +61,20 @@ toDoForm.addEventListener("submit", handleToDoSubmit);
 const savedToDos=localStorage.getItem(TODOS_KEY);
 
 //새로고침했을 때 localstorage에 있는 todos를 그려줌
-if(savedToDos !=null){
-    const parsedToDos=JSON.parse(savedToDos);//string을 array로 바꾸어줌
+function showToDoFromLocalStorage(){
+    const parsedToDos=JSON.parse(localStorage.getItem(TODOS_KEY));//string을 array로 바꾸어줌
     toDos=parsedToDos;
     parsedToDos.forEach(paintToDo);
 }
 
+if(savedToDos !=null){
+    showToDoFromLocalStorage();
+}
+
+
+//todo를 complete했을 때 나타나는 기능을 위한 함수들
+
+//complete한 함수를 doDos에서 찾기위해 id를 바탕으로 toDo의 순서를 찾는 함수
 function elementFinderWithId(array,id){
     for (let step=0;step<array.length;step++){
         if(array[step].id==id){
@@ -75,6 +83,7 @@ function elementFinderWithId(array,id){
     }
 }
 
+//todo를 complete했을 때 실행되는 main 함수
 function completeToDo(event){
     const li=event.target.parentElement;
     const span=event.target;
@@ -85,14 +94,22 @@ function completeToDo(event){
     const toDo=toDos[orderOfToDo];
 
     toDo.isCompleted=!toDo.isCompleted;
-    localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
+    if(!toDo.isCompleted){
+        let tmp=toDo;
+        toDos.splice(orderOfToDo,1);
+        toDos.unshift(tmp);
+    }else{
+        let tmp=toDo;
+        toDos.splice(orderOfToDo,1);
+        toDos.push(tmp);
+    }
 
-    makeNewToDoObj(span.innerText,true);
-    deleteToDo(event);
+    localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
+    toDoList.innerHTML="";
+    showToDoFromLocalStorage();
 }
 
 //to do list의 드래그 기능
-
 $(function(){
     $(".sortable").sortable();
 });
