@@ -19,10 +19,26 @@ function deleteToDo(event){
     saveToDos();
 }
 
+//todo를 드래그하고 놓았을 때 html데이터를 localstorage에 저장하기 위해 html의 todolist를 js의 toDos에 저장하는 함수
+function refreshToDos(event,ui){
+    const li = ui.item[0];
+    
+    //움직인 todo가 원래 m 번째 array인지 toDos에서 알아내기-findIndex
+    const movedFrom=toDos.findIndex((toDo)=>toDo.id == parseInt(li.id));
+    //움직인 todo가 n 번째 child로 이동했는지 todo-list에서 알아내기
+    //Array.from을 통해 ul.children을 호출해 유사 배열을 부르고, 거기서 indexOf를 이용해 li의 순서를 구함.
+    const movedTo=Array.from(li.parentNode.children).indexOf(li);
+    console.dir(li.parentElement)
+    console.dir(li);
+    //toDos에서 m 번째 element 지우기
+    //toDos에서 n 번째에 움직인 todo 추가하기
+
+}
+
 function paintToDo(newToDoObj){
     const li =document.createElement("li");
     li.id=newToDoObj.id;
-    li.classList.add("nonselectable");
+    li.classList.add("nonselectable","todo");
     const span=document.createElement("span");
     span.innerText=newToDoObj.text;
     const button=document.createElement("button");
@@ -70,7 +86,7 @@ if(savedToDos !=null){
 
 //todo를 complete했을 때 나타나는 기능을 위한 함수들
 
-//complete한 함수를 doDos에서 찾기위해 id를 바탕으로 toDo의 순서를 찾는 함수
+//toDos에서 id를 바탕으로 toDo의 순서를 찾는 함수
 function elementFinderWithId(array,id){
     for (let step=0;step<array.length;step++){
         if(array[step].id==id){
@@ -81,6 +97,7 @@ function elementFinderWithId(array,id){
 
 //todo를 complete했을 때 실행되는 main 함수
 function completeToDo(event){
+    
     const li=event.target.parentElement;
     const span=event.target;
 
@@ -106,6 +123,9 @@ function completeToDo(event){
 }
 
 //to do list의 드래그 기능
-$(function(){
-    $(".sortable").sortable();
+$(".sortable").sortable({
+    axis:"y",
+    stop: function (event,ui){
+        refreshToDos(event,ui);
+    }
 });
