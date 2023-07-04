@@ -22,7 +22,6 @@ function deleteToDo(event){
 //todo를 드래그하고 놓았을 때 html데이터를 localstorage에 저장하기 위해 html의 todolist를 js의 toDos에 저장하는 함수
 function refreshToDos(event,ui){
     const li = ui.item[0];
-    
     //움직인 todo가 원래 m 번째 array인지 toDos에서 알아내기-findIndex
     const movedFrom=toDos.findIndex((toDo)=>toDo.id == parseInt(li.id));
     //움직인 todo가 n 번째 child로 이동했는지 todo-list에서 알아내기
@@ -30,9 +29,13 @@ function refreshToDos(event,ui){
     const movedTo=Array.from(li.parentNode.children).indexOf(li);
     console.dir(li.parentElement)
     console.dir(li);
-    //toDos에서 m 번째 element 지우기
+    //이동한 toDo movedFrom 변수로 구하기
+    const toDo=toDos[movedFrom];
+    //toDos에서 m 번째에 움직인 todo 제거하기
+    toDos.splice(movedFrom,1);
     //toDos에서 n 번째에 움직인 todo 추가하기
-
+    toDos.splice(movedTo,0,toDo);
+    saveToDos();
 }
 
 function paintToDo(newToDoObj){
