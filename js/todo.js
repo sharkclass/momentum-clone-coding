@@ -1,10 +1,11 @@
 const toDoForm=document.querySelector("#todo-form");
 const toDoInput=toDoForm.querySelector("input");
-const toDoList=document.querySelector("#todo-list");    
 
 const TODOS_KEY="todos";
 const COMPLETED="completed"
 const SORTABLE="sortable";
+const REMOVED="removed";
+const SUMMARIZED="summarized";
 
 let toDos=[];
 
@@ -86,7 +87,6 @@ if(savedToDos !=null){
     showToDoFromLocalStorage();
 }
 
-
 //todo를 complete했을 때 나타나는 기능을 위한 함수들
 
 //toDos에서 id를 바탕으로 toDo의 순서를 찾는 함수
@@ -99,10 +99,12 @@ function elementFinderWithId(array,id){
 }
 
 //todo를 complete했을 때 실행되는 main 함수
+
+isAllToDosCompleted();
+
 function completeToDo(event){
     
     const li=event.target.parentElement;
-    const span=event.target;
 
     li.classList.toggle(COMPLETED);
 
@@ -123,6 +125,7 @@ function completeToDo(event){
     localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
     toDoList.innerHTML="";
     showToDoFromLocalStorage();
+    isAllToDosCompleted();
 }
 
 //to do list의 드래그 기능
@@ -132,3 +135,4 @@ $(".sortable").sortable({
         refreshToDos(event,ui);
     }
 });
+
