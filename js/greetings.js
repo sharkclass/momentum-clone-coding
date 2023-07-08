@@ -23,11 +23,11 @@ function paintGreetings(username){
     greeting.innerText=`Hello ${username}`;//==("Hello " + username)-->`"string" ${variable}`
 
     greeting.classList.remove(HIDDEN_CLASSNAME);
-    weatherContainer.classList.remove(HIDDEN_CLASSNAME);
+    weatherContainer.classList.remove(REMOVED);
     toDoForm.classList.remove(HIDDEN_CLASSNAME);
     toDoList.classList.remove(HIDDEN_CLASSNAME);
-    quoteContainer.classList.remove(HIDDEN_CLASSNAME);
-    clockAndToDo.classList.remove(HIDDEN_CLASSNAME);
+    quoteContainer.classList.remove(REMOVED);
+    clockAndToDo.classList.remove(REMOVED);
 }
 
 const savedUsername=localStorage.getItem(USERNAME_KEY);
