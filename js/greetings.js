@@ -14,12 +14,11 @@ function onLoginSubmit(event){
     const username=loginInput.value;
     localStorage.setItem(USERNAME_KEY,username); //browser에 값을 저장해 새로고침해도 값을 기억하도록 함. (key,value)형식으로 작성
     paintGreetings(username);
-    loginForm.classList.add(HIDDEN_CLASSNAME);
+    loginForm.classList.add(REMOVED);
 }
 
 //다른 요소들을 등장하게 하는 함수
 function paintGreetings(username){
-    flow()
     greeting.classList
     greeting.innerText=`Hello ${username}`;//==("Hello " + username)-->`"string" ${variable}`
 
@@ -34,15 +33,13 @@ function paintGreetings(username){
 const savedUsername=localStorage.getItem(USERNAME_KEY);
 
 if(savedUsername==null){
-    ebb();
-    loginForm.classList.remove(HIDDEN_CLASSNAME);//show the form
+    loginForm.classList.remove(REMOVED);//show the form
     loginForm.addEventListener("submit", onLoginSubmit);    
 } else {
-    flow();
     paintGreetings(savedUsername);
 }
 
-function removeGreetings(event){
+function removeGreetings(){
     location.reload();
     localStorage.removeItem(USERNAME_KEY);
 }

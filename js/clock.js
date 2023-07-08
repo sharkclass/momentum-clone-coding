@@ -19,14 +19,12 @@ function convertToToDoLsit(){
     clock.classList.add(REMOVED);
     toDoForm.classList.remove(REMOVED);
     toDoList.classList.remove(SUMMARIZED);
-    ebb();
 }
 
 function convertToClock(){
     clock.classList.remove(REMOVED);
     toDoForm.classList.add(REMOVED);
     toDoList.classList.add(SUMMARIZED);
-    flow();
 }
 
 getClock();

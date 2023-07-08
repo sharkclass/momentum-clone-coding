@@ -21,31 +21,3 @@ function isAllToDosCompleted(){
         }
     }
 }
-
-//ebb and flow 변수 정의
-const upperContainer=document.querySelector("#upper-container");
-const downsideContainer=document.querySelector("#downside-container");
-
-const HEIGHT_ONE_THIRD="height_one-third";
-const HEIGHT_TWO_THIRD="height_two-third";
-
-
-//ebb and flow 함수 정의
-//ebb: 아래가 더 크게 함
-function ebb(){
-    upperContainer.classList.remove(HEIGHT_TWO_THIRD);
-    downsideContainer.classList.remove(HEIGHT_ONE_THIRD);
-    upperContainer.classList.add(HEIGHT_ONE_THIRD);
-    downsideContainer.classList.add(HEIGHT_TWO_THIRD);
-    toDoCompletedMessage.classList.add(REMOVED);
-    toDoList.classList.remove(REMOVED);
-}
-
-//flow: 위가 더 크게 함
-function flow(){
-    upperContainer.classList.remove(HEIGHT_ONE_THIRD);
-    downsideContainer.classList.remove(HEIGHT_TWO_THIRD);
-    upperContainer.classList.add(HEIGHT_TWO_THIRD);
-    downsideContainer.classList.add(HEIGHT_ONE_THIRD);
-    isAllToDosCompleted();
-}

@@ -14,28 +14,28 @@
     <link rel="stylesheet" href="css/components/to-do.css">
 
     <link rel="stylesheet" href="css/screen/welcome.css">
+
+    <link rel="stylesheet" href="css/hidden.css">
     <title>Momentum-clone</title>
 </head>
 <body>
-    <div id="upper-container">
+    
         <div id="weather-container" class="hidden">
             <span></span>
             <span></span>
         </div>
-        <h2 id="clock_and_todo" class="hidden nonselectable">
+        <h2 id="clock_and_todo" class="removed nonselectable">
             <span id="clock">00:00</span>
             <form id="todo-form" class="hidden removed">
                 <h2 id="todo_title">To Do</h2>
                 <input required type="text" placeholder="Write a To Do and Press Enter">
             </form>
         </h2>
-    </div>
-
-    <div id="downside-container">
+    
         <h1 id="greeting" class="hidden"></h1>
-        <form id="login-form" class="hidden">
-            <input required maxlength=15 type="text" placeholder="What is your name?">
-            <button>Log In</button>
+        <form id="login-form" class="removed login-form">
+            <h1 id="welcome-message">Nice to meet you.</h1>
+            <input id="name-input" class="input" required maxlength=20 type="text" placeholder="Please, tell me your name.">
         </form>
         <span id="todo-completed-message" class="removed">Completed!</span>
         <ul id="todo-list" class="hidden summarized sortable"></ul>
@@ -43,7 +43,8 @@
             <span></span>
             <span></span>
         </div>
-    </div>
+        
+   
 
     <!--jQuery cdn-->
     <script
