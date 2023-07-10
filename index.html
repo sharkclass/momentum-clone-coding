@@ -15,15 +15,25 @@
     <link rel="stylesheet" href="css/components/weather.css">
 
     <link rel="stylesheet" href="css/screen/welcome.css">
+    <link rel="stylesheet" href="css/screen/clock-and-todo.css">
 
     <link rel="stylesheet" href="css/hidden.css">
     <title>Momentum-clone</title>
 </head>
 <body>
-    
-        <div id="weather-container" class="removed">
-            <span></span>
-            <span></span>
+   
+        <div id="weather-container" class="removed flex">
+            <div id="weather-container__first-row" class="flex">
+                <!--<span></span>-->
+                <img id="weather-icon"></img>
+                <span id="temperature">
+                   <span id="temperature__number"></span>
+                 <span id="temperature__celcius">℃</span>
+                  </span>
+            </div>
+            <div id="weather-container__second-row" class="flex">
+                <span id="weather-city" class=""></span>
+            </div>
         </div>
         <h2 id="clock_and_todo" class="removed nonselectable">
             <span id="clock">00:00</span>

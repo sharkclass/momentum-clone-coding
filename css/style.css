@@ -12,3 +12,6 @@ h2{
     font-size:200px;
 }
 
+.flex{
+    display: flex;
+}
