@@ -1,7 +1,3 @@
-const clockAndToDo = document.querySelector("#clock_and_todo");
-const clock=document.querySelector("#clock");
-const toDoTitle=document.querySelector("#todo_title");
-
 function getClock(){
     const date=new Date();
     
@@ -10,21 +6,24 @@ function getClock(){
     const minutes=String(date.getMinutes()).padStart(2,0);
     //const seconds=String(date.getSeconds()).padStart(2,0);
 
-    clock.innerText=(`${hours}:${minutes}`);
-    clock.addEventListener("click",convertToToDoLsit);
-    toDoTitle.addEventListener("click",convertToClock);
+    if(mainTitle.classList.contains("clock")){   
+        mainTitle.innerText=(`${hours}:${minutes}`);
+    }
+    mainTitle.addEventListener("click",titleConverting);
 }
 
-function convertToToDoLsit(){
-    clock.classList.add(REMOVED);
-    toDoForm.classList.remove(REMOVED);
-    toDoList.classList.remove(SUMMARIZED);
-}
-
-function convertToClock(){
-    clock.classList.remove(REMOVED);
-    toDoForm.classList.add(REMOVED);
-    toDoList.classList.add(SUMMARIZED);
+function titleConverting(){
+    if(mainTitle.classList.contains("clock")){
+        mainTitle.classList.remove("clock");
+        mainTitle.classList.add("to-do-title");
+        toDoList.classList.remove(SUMMARIZED);
+        mainTitle.innerText="To Do";
+    } else{
+        mainTitle.classList.remove("to-do-title");
+        mainTitle.classList.add("clock");
+        toDoList.classList.add(SUMMARIZED);
+        getClock();
+    }
 }
 
 getClock();

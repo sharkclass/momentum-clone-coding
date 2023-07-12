@@ -1,5 +1,4 @@
 //다른 파일에서 ebb and flow를 구현하기 위해 미리 정의한 변수
-const toDoList=document.querySelector("#todo-list");    
 const toDoCompletedMessage=document.querySelector("#todo-completed-message");
 
 //모든 todo가 완료되었을 때 completed!가 뜨게 하는 함수

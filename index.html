@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="css/variables.css">
 
     <link rel="stylesheet" href="css/components/background.css">
-    <link rel="stylesheet" href="css/components/clock.css">
+    <link rel="stylesheet" href="css/components/title.css">
     <link rel="stylesheet" href="css/components/to-do.css">
     <link rel="stylesheet" href="css/components/weather.css">
 
     <link rel="stylesheet" href="css/screen/welcome.css">
-    <link rel="stylesheet" href="css/screen/clock-and-todo.css">
 
     <link rel="stylesheet" href="css/hidden.css">
     <title>Momentum-clone</title>
@@ -35,14 +34,10 @@
                 <span id="weather-city" class=""></span>
             </div>
         </div>
-        <h2 id="clock_and_todo" class="removed nonselectable">
-            <span id="clock">00:00</span>
-            <form id="todo-form" class="hidden removed">
-                <h2 id="todo_title">To Do</h2>
-                <input required type="text" placeholder="Write a To Do and Press Enter">
-            </form>
-        </h2>
-    
+        <h2 id="main-title" class="removed clock flex nonselectable">00:00</h2>
+        <form id="todo-form" class="removed">
+            <input required type="text" placeholder="Write a To Do and Press Enter">
+        </form>    
         <h1 id="greeting" class="hidden"></h1>
         <form id="login-form" class="removed login-form">
             <h1 id="welcome-message">Nice to meet you.</h1>

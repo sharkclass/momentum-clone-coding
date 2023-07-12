@@ -1,5 +1,7 @@
 const toDoForm=document.querySelector("#todo-form");
 const toDoInput=toDoForm.querySelector("input");
+const mainTitle=document.querySelector("#main-title");
+const toDoList=document.querySelector("#todo-list");    
 
 const TODOS_KEY="todos";
 const COMPLETED="completed"

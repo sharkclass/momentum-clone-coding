@@ -24,10 +24,10 @@ function paintGreetings(username){
 
     greeting.classList.remove(HIDDEN_CLASSNAME);
     weatherContainer.classList.remove(REMOVED);
-    toDoForm.classList.remove(HIDDEN_CLASSNAME);
+    toDoForm.classList.remove(REMOVED);
     toDoList.classList.remove(HIDDEN_CLASSNAME);
     quoteContainer.classList.remove(REMOVED);
-    clockAndToDo.classList.remove(REMOVED);
+    mainTitle.classList.remove(REMOVED);
 }
 
 const savedUsername=localStorage.getItem(USERNAME_KEY);
