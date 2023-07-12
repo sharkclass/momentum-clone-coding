@@ -8,6 +8,7 @@ const COMPLETED="completed"
 const SORTABLE="sortable";
 const REMOVED="removed";
 const SUMMARIZED="summarized";
+const TODOTITLE="todo-title";
 
 let toDos=[];
 

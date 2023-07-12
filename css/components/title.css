@@ -1,0 +1,14 @@
+.clock{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);/*대상의 크기를 절반만큼 빼기 때문에 요소의 왼쪽 긑이 아닌 요소의 정중앙이 top:50%, left:50%에 위치함.*/
+}
+
+.todo-title{
+    position:absolute;
+    top:25%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+

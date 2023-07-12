@@ -15,43 +15,42 @@
     <link rel="stylesheet" href="css/components/weather.css">
 
     <link rel="stylesheet" href="css/screen/welcome.css">
-
     <link rel="stylesheet" href="css/hidden.css">
     <title>Momentum-clone</title>
 </head>
 <body>
-   
-        <div id="weather-container" class="removed flex">
-            <div id="weather-container__first-row" class="flex">
-                <!--<span></span>-->
-                <img id="weather-icon"></img>
-                <span id="temperature">
-                   <span id="temperature__number"></span>
-                 <span id="temperature__celcius">℃</span>
-                  </span>
-            </div>
-            <div id="weather-container__second-row" class="flex">
-                <span id="weather-city" class=""></span>
-            </div>
-        </div>
-        <h2 id="main-title" class="removed clock flex nonselectable">00:00</h2>
-        <form id="todo-form" class="removed">
-            <input required type="text" placeholder="Write a To Do and Press Enter">
-        </form>    
-        <h1 id="greeting" class="hidden"></h1>
-        <form id="login-form" class="removed login-form">
-            <h1 id="welcome-message">Nice to meet you.</h1>
-            <input id="name-input" class="input" required maxlength=20 type="text" placeholder="Please, tell me your name.">
-        </form>
-        <span id="todo-completed-message" class="removed">Completed!</span>
-        <ul id="todo-list" class="hidden summarized sortable"></ul>
-        <div id="quote-container" class="removed">
-            <span></span>
-            <span></span>
-        </div>
-        
-   
+    <form id="login-form" class="removed login-form">
+        <h1 id="welcome-message">Nice to meet you.</h1>
+        <input id="name-input" class="input" required maxlength=20 type="text" placeholder="Please, tell me your name.">
+    </form>
 
+    <div id="weather-container" class="removed flex">
+        <div id="weather-container__first-row" class="flex">
+            <!--<span></span>-->
+            <img id="weather-icon"></img>
+            <div id="temperature">
+                <span id="temperature__number"></span>
+                <span id="temperature__celcius">℃</span>
+            </div>
+        </div>
+        <div id="weather-container__second-row" class="flex">
+            <span id="weather-city" class=""></span>
+        </div>
+    </div>
+
+    <h2 id="main-title" class="removed clock flex nonselectable">00:00</h2>
+    <form id="todo-form" class="removed">
+        <input required type="text" placeholder="Write a To Do and Press Enter">
+    </form>    
+    <h1 id="greeting" class="hidden"></h1>   
+    <span id="todo-completed-message" class="removed">Completed!</span>
+    <ul id="todo-list" class="hidden summarized sortable"></ul>
+
+    <div id="quote-container" class="removed flex">
+        <span></span>
+        <span></span>
+    </div>
+        
     <!--jQuery cdn-->
     <script
         src="https://code.jquery.com/jquery-3.7.0.js"

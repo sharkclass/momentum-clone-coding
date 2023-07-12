@@ -15,13 +15,16 @@ function getClock(){
 function titleConverting(){
     if(mainTitle.classList.contains("clock")){
         mainTitle.classList.remove("clock");
-        mainTitle.classList.add("to-do-title");
-        toDoList.classList.remove(SUMMARIZED);
+        mainTitle.classList.add(TODOTITLE);
         mainTitle.innerText="To Do";
+
+        toDoList.classList.remove(SUMMARIZED);
     } else{
-        mainTitle.classList.remove("to-do-title");
+        mainTitle.classList.remove(TODOTITLE);
         mainTitle.classList.add("clock");
+
         toDoList.classList.add(SUMMARIZED);
+
         getClock();
     }
 }
