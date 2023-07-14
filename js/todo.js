@@ -1,7 +1,9 @@
 const toDoForm=document.querySelector("#todo-form");
 const toDoInput=toDoForm.querySelector("input");
 const mainTitle=document.querySelector("#main-title");
-const toDoList=document.querySelector("#todo-list");    
+const toDoList=document.querySelector("#todo-list");   
+const toDoContainer=document.querySelector("#todo-container"); 
+//const toDoCompletedMessage=document.querySelector("#todo-completed-message");
 
 const TODOS_KEY="todos";
 const COMPLETED="completed"
@@ -103,7 +105,29 @@ function elementFinderWithId(array,id){
 
 //todo를 complete했을 때 실행되는 main 함수
 
-isAllToDosCompleted();
+/*
+//모든 todo가 완료되었을 때 completed!가 뜨게 하는 함수
+function isAllToDosCompleted(){
+    if(toDoList.classList.contains(SUMMARIZED)){
+        let completedCount=0;
+        for(step=0;step<toDos.length;step++){
+            if(!toDos[step].isCompleted){
+                toDoCompletedMessage.classList.add(REMOVED);
+                toDoList.classList.remove(REMOVED);
+                break;
+            } else{
+                completedCount++;
+            }
+            if(completedCount==toDos.length){
+                toDoCompletedMessage.classList.remove(REMOVED);
+                toDoList.classList.add(REMOVED);
+            }
+        }
+    }
+}
+*/
+
+//isAllToDosCompleted();
 
 function completeToDo(event){
     
@@ -128,7 +152,7 @@ function completeToDo(event){
     localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
     toDoList.innerHTML="";
     showToDoFromLocalStorage();
-    isAllToDosCompleted();
+    //isAllToDosCompleted();
 }
 
 //to do list의 드래그 기능

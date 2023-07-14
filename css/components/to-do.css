@@ -6,7 +6,15 @@ li.completed span{
     display:none;
 }
 
-#todo_title{
-    color:var(--basic-green);
-    font-size:10vw;
+#todo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#todo-form{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
