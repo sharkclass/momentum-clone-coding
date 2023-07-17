@@ -16,6 +16,7 @@ let toDos=[];
 
 function saveToDos(){
     localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
+    submitOnlyMajorToDo();
 }
 
 function deleteToDo(event){
@@ -75,6 +76,21 @@ function handleToDoSubmit(event){
     toDos.push(newToDoObj);//toDos에 string 대신에 object를 저장함
     paintToDo(newToDoObj);
     saveToDos();
+    submitOnlyMajorToDo();
+}
+
+//summarized screen에서는 main goal 하나만 입력하고 나머지는 todo list에서 입력하게 함.
+
+function submitOnlyMajorToDo(){
+    if(toDoList.classList.contains(SUMMARIZED)){
+        if(localStorage.getItem(TODOS_KEY).length!=2){
+            removeElement(toDoForm);
+        }else{
+            showElement(toDoForm);
+        }
+    }else{
+        showElement(toDoForm);
+    }
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
@@ -91,6 +107,7 @@ function showToDoFromLocalStorage(){
 if(savedToDos !=null){
     showToDoFromLocalStorage();
 }
+submitOnlyMajorToDo();
 
 //todo를 complete했을 때 나타나는 기능을 위한 함수들
 

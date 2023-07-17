@@ -17,26 +17,18 @@ function onLoginSubmit(event){
     loginForm.classList.add(REMOVED);
 }
 
-function removeElement(element){
-    element.classList.add(REMOVED);
-}
-
-function appearElement(element){
-    element.classList.remove(REMOVED);
-}
-
 //다른 요소들을 등장하게 하는 함수
 function paintGreetings(username){
     removeElement(loginForm);
-    greeting.innerText=`Hello ${username}`;//==("Hello " + username)-->`"string" ${variable}`
+    greeting.innerText=`Have a nice day, ${username}.`;//==("Hello " + username)-->`"string" ${variable}`
 
-    appearElement(greeting);
-    appearElement(weatherContainer);
-    appearElement(toDoForm);
-    appearElement(toDoList);
-    appearElement(quoteContainer);
-    appearElement(mainTitle);
-    appearElement(toDoContainer);
+    showElement(greeting);
+    showElement(weatherContainer);
+    showElement(toDoContainer);
+    showElement(toDoList);
+    showElement(quoteContainer);
+    showElement(mainTitle);
+    showElement(toDoContainer);
 }
 
 const savedUsername=localStorage.getItem(USERNAME_KEY);
