@@ -25,3 +25,16 @@ h3{
 .flex{
     display: flex;
 }
+
+.input{
+    box-sizing: border-box;
+    text-align: center;
+    border:none;
+    border-bottom: 2px solid black;
+    font-size: 40px;
+    width:100%;
+}
+
+.input:focus{
+    outline:none;
+}

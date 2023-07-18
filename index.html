@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/components/quotes.css">
 
     <link rel="stylesheet" href="css/hidden.css">
+
     <title>Momentum-clone</title>
 </head>
 <body>
@@ -46,21 +47,19 @@
         <div id="todo-container" class="removed flex">
             <form id="todo-form" class=" flex">
                 <h3 id="major-todo">What is your main goal?</h3>
-                <input class="input" required type="text" placeholder="">
+                    <input id="todo-input" class="input" required type="text" placeholder="" size="" maxlength="">
             </form>    
             <!--<span id="todo-completed-message" class="removed">Completed!</span>-->
-            <ul id="todo-list" class="removed summarized sortable"></ul>
+            <ul id="todo-list" class="removed summarized sortable flex"></ul>
         </div>
     </div>
-    
-        
-    
-    
 
+    <!--
     <div id="quote-container" class="removed flex">
         <span></span>
         <span></span>
     </div>
+    -->
         
     <!--jQuery cdn-->
     <script
@@ -74,10 +73,13 @@
         crossorigin="anonymous">
     </script> 
 
+    <!--fontawesome cdn-->
+    <script src="https://kit.fontawesome.com/5976348e1b.js" crossorigin="anonymous"></script>
+
     <script src="js/basic-function.js"></script>
     <script src="js/todo.js"></script>
     <script src="js/clock.js"></script>
-    <script src="js/quotes.js"></script>
+    <!--<script src="js/quotes.js"></script>-->
     <script src="js/background.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/greetings.js"></script>

@@ -7,7 +7,7 @@ const USERNAME_KEY="username";
 
 //greetings section이 지나고 다른 요소들이 등장하기 위해 정의된 변수들
 const weatherContainer=document.querySelector("#weather-container")
-const quoteContainer=document.querySelector("#quote-container");
+//const quoteContainer=document.querySelector("#quote-container");
 
 function onLoginSubmit(event){
     event.preventDefault(); //preventDefault stops default behavior of browser and javascript gives event value to first argument of fuction for free when addEventListener activates.
@@ -26,7 +26,7 @@ function paintGreetings(username){
     showElement(weatherContainer);
     showElement(toDoContainer);
     showElement(toDoList);
-    showElement(quoteContainer);
+    //showElement(quoteContainer);
     showElement(mainTitle);
     showElement(toDoContainer);
 }

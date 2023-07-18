@@ -3,6 +3,7 @@ const toDoInput=toDoForm.querySelector("input");
 const mainTitle=document.querySelector("#main-title");
 const toDoList=document.querySelector("#todo-list");   
 const toDoContainer=document.querySelector("#todo-container"); 
+const majorToDo=document.querySelector("#major-todo");
 //const toDoCompletedMessage=document.querySelector("#todo-completed-message");
 
 const TODOS_KEY="todos";
@@ -51,8 +52,8 @@ function paintToDo(newToDoObj){
     li.classList.add("nonselectable","todo");
     const span=document.createElement("span");
     span.innerText=newToDoObj.text;
-    const button=document.createElement("button");
-    button.innerText="X";
+    const button=document.createElement("i");
+    button.classList.add("fa-solid","fa-trash")
     button.addEventListener("click",deleteToDo);
     li.appendChild(span);
     li.appendChild(button);
@@ -84,12 +85,15 @@ function handleToDoSubmit(event){
 function submitOnlyMajorToDo(){
     if(toDoList.classList.contains(SUMMARIZED)){
         if(localStorage.getItem(TODOS_KEY).length!=2){
-            removeElement(toDoForm);
+            removeElement(toDoInput);
+            majorToDo.innerText="Main goal";
         }else{
-            showElement(toDoForm);
+            showElement(toDoInput);
+            majorToDo.innerText="What is your main goal?";
         }
     }else{
         showElement(toDoForm);
+        majorToDo.innerText="What is your main goal?";
     }
 }
 
@@ -180,3 +184,14 @@ $(".sortable").sortable({
     }
 });
 
+//todo form의 사이즈가 입력한 글자에 맞춰 자동으로 늘어나게 하는 함수
+toDoInput.addEventListener("keydown",toDoFormSizeControl);
+
+
+function toDoFormSizeControl(){
+    if(toDoInput.value.length>=20&&toDoInput.value.length<50){
+        toDoInput.size=toDoInput.value.length+1;
+    } else if(toDoInput.value.length<20){
+        toDoInput.size=20;
+    }
+}

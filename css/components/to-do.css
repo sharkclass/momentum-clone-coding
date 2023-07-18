@@ -21,3 +21,19 @@ li.completed span{
 #major-todo{
     margin-bottom: 15px;
 }
+
+#todo-input{
+    
+}
+
+#todo-list{
+    font-size:40px;
+}
+
+/*todo list의 삭제 아이콘*/
+#todo-list i{
+    font-size: 30px;
+    color:var(--non-selected-element);
+    border:none;
+    margin:0 5px;
+}

@@ -11,18 +11,7 @@
     padding-top:30px;
 }
 
-.input{
-    width:max-content;
-    box-sizing: border-box;
-    text-align: center;
-    border:none;
-    border-bottom: 2px solid black;
-    font-size: 40px;
-}
 
-.input:focus{
-    outline:none;
-}
 
 #greeting{
     box-sizing: border-box;

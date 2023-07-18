@@ -5,5 +5,6 @@
     --basic-light-sand:#D7BD8C;
     --basic-dark-sand:#AD8353;
     /*color pallete from https://sarahrenaeclark.com/25-summer-color-palettes/?epik=dj0yJnU9aTI2ZHVrczdENV9KMVZwd292dmVtcjJlbW9aRTN6TVomcD0wJm49dDhxLW45ZjF5YTBQTmctMHpmbkhSQSZ0PUFBQUFBR1I3UHdv*/
-
+    --grey:rgba(0,0,0,0.5);
+    --non-selected-element:rgba(0,0,0,0.1);
 }
