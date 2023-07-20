@@ -184,9 +184,8 @@ $(".sortable").sortable({
     }
 });
 
-//todo form의 사이즈가 입력한 글자에 맞춰 자동으로 늘어나게 하는 함수
+//input의 사이즈가 입력한 글자에 맞춰 자동으로 늘어나게 하는 함수
 toDoInput.addEventListener("keydown",toDoFormSizeControl);
-
 
 function toDoFormSizeControl(){
     if(toDoInput.value.length>=20&&toDoInput.value.length<50){

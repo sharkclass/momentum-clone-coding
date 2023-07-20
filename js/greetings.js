@@ -17,11 +17,26 @@ function onLoginSubmit(event){
     loginForm.classList.add(REMOVED);
 }
 
+function greetingMessage(username){
+    if(hours>=06&&hours<10){
+        return `Good Morning, ${username}`;
+    } else if(hours>=10&&hours<17){
+        return `Have a nice day, ${username}`;
+    } else if(hours>=17&&hours<24){
+        return `Good evening, ${username}`;
+    } else if(hours>=0&&hours<06){
+        return `Keep it up! ${username}`;
+    } else {
+        return `Greeting, ${username}`;
+    }
+    //Good Morning, Have a nice day, Good Evening, Keep it up!
+    //0600~1000, 1000~1700, 1700~2400, 2400~0600
+}
+
 //다른 요소들을 등장하게 하는 함수
 function paintGreetings(username){
     removeElement(loginForm);
-    greeting.innerText=`Have a nice day, ${username}.`;//==("Hello " + username)-->`"string" ${variable}`
-
+    greeting.innerText=greetingMessage(username);
     showElement(greeting);
     showElement(weatherContainer);
     showElement(toDoContainer);
