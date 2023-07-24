@@ -27,17 +27,23 @@ li.completed span{
     width:70%;
     font-size:30px;
     flex-direction: column;
-    align-items: center;
 }
 
-#todo-list li{
+#todo-list li {
     max-width:100%;
-    justify-content: space-between;
+    justify-content: center;
+    list-style-position: inside;
+}
+
+.todo-screen #todo-list li::before{
+    content:'▫';
+    display:inline-block;
 }
 
 #todo-list span{
-    margin-left:30px;
-    line-height: 100.5%;
+    font-size:25px;
+    margin-left:10px;
+    line-height: 150%;
     overflow: hidden;
 }
 
@@ -88,7 +94,6 @@ li.completed span{
     font-size:30px;
     margin:1% 0 ;
     line-height: 100.5%;
-    
 }
 
 #virtual-span{

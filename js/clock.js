@@ -26,6 +26,15 @@ function titleConverting(){
         removeElement(greeting);
         majorToDo.innerText="Write a To Do here";
 
+        toDoList.classList.add(SORTABLE);
+        
+        //to do list의 드래그 기
+        $(".sortable").sortable({
+            axis:"y",
+            stop: function (event,ui){
+                refreshToDos(event,ui);
+            }
+        });
         toDoList.classList.remove(SUMMARIZED);
         submitOnlyMajorToDo();
     } else{ //todo->clock
@@ -34,6 +43,7 @@ function titleConverting(){
         showElement(greeting);
         majorToDo.innerText="What is your main goal?";
 
+        toDoList.classList.remove(SORTABLE);
         toDoList.classList.add(SUMMARIZED);
         submitOnlyMajorToDo();
 

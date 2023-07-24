@@ -179,35 +179,11 @@ function completeToDo(event){
     //isAllToDosCompleted();
 }
 
-//to do list의 드래그 기능
-$(".sortable").sortable({
-    axis:"y",
-    stop: function (event,ui){
-        refreshToDos(event,ui);
-    }
-});
-
 //input의 사이즈가 입력한 글자에 맞춰 자동으로 늘어나게 하는 함수
 
 toDoFormSizeControl();
 toDoInput.addEventListener("keydown",toDoFormSizeControl);
 toDoInput.addEventListener("keyup",toDoFormSizeControl);
-
-/*
-toDoInput.addEventListener("keydown",toDoFormSizeControl);
-
-function toDoFormSizeControl(){
-    if(toDoInput.value.length>=12&&toDoInput.value.length<40){
-        toDoInput.size=1.5*toDoInput.value.length+2;
-    } else if(toDoInput.value.length<12){
-        toDoFormSizeToInitial();
-    }
-}
-
-function toDoFormSizeToInitial(){
-    toDoInput.size=20;
-}
-*/
 
 function toDoFormSizeControl(){
         showElement(virtualSpan);
