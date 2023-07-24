@@ -4,6 +4,7 @@ const mainTitle=document.querySelector("#main-title");
 const toDoList=document.querySelector("#todo-list");   
 const toDoContainer=document.querySelector("#todo-container"); 
 const majorToDo=document.querySelector("#major-todo");
+const virtualSpan=document.querySelector("#virtual-span");
 //const toDoCompletedMessage=document.querySelector("#todo-completed-message");
 
 const TODOS_KEY="todos";
@@ -11,7 +12,7 @@ const COMPLETED="completed"
 const SORTABLE="sortable";
 const REMOVED="removed";
 const SUMMARIZED="summarized";
-const TODOTITLE="todo-title";
+const TODOSCREEN="todo-screen";
 
 let toDos=[];
 
@@ -25,6 +26,7 @@ function deleteToDo(event){
     li.remove();
     toDos=toDos.filter((toDo) => toDo.id !== parseInt(li.id));//toDos에서 button을 누른 li의 id와 같은 id를 가지고 있는 object를 찾아 제거함
     saveToDos();
+    toDoFormSizeControl();
 }
 
 //todo를 드래그하고 놓았을 때 html데이터를 localstorage에 저장하기 위해 html의 todolist를 js의 toDos에 저장하는 함수
@@ -49,7 +51,7 @@ function refreshToDos(event,ui){
 function paintToDo(newToDoObj){
     const li =document.createElement("li");
     li.id=newToDoObj.id;
-    li.classList.add("nonselectable","todo");
+    li.classList.add("nonselectable","todo","flex");
     const span=document.createElement("span");
     span.innerText=newToDoObj.text;
     const button=document.createElement("i");
@@ -86,14 +88,13 @@ function submitOnlyMajorToDo(){
     if(toDoList.classList.contains(SUMMARIZED)){
         if(localStorage.getItem(TODOS_KEY).length!=2){
             removeElement(toDoInput);
-            majorToDo.innerText="Main goal";
+            majorToDo.innerText="Main Goal"
         }else{
             showElement(toDoInput);
-            majorToDo.innerText="What is your main goal?";
+            majorToDo.innerText="What is your main goal"
         }
     }else{
-        showElement(toDoForm);
-        majorToDo.innerText="What is your main goal?";
+        showElement(toDoInput);
     }
 }
 
@@ -110,6 +111,8 @@ function showToDoFromLocalStorage(){
 
 if(savedToDos !=null){
     showToDoFromLocalStorage();
+}else{
+    localStorage.setItem(TODOS_KEY,"[]");
 }
 submitOnlyMajorToDo();
 
@@ -185,12 +188,30 @@ $(".sortable").sortable({
 });
 
 //input의 사이즈가 입력한 글자에 맞춰 자동으로 늘어나게 하는 함수
+
+toDoFormSizeControl();
+toDoInput.addEventListener("keydown",toDoFormSizeControl);
+toDoInput.addEventListener("keyup",toDoFormSizeControl);
+
+/*
 toDoInput.addEventListener("keydown",toDoFormSizeControl);
 
 function toDoFormSizeControl(){
-    if(toDoInput.value.length>=20&&toDoInput.value.length<50){
-        toDoInput.size=toDoInput.value.length+1;
-    } else if(toDoInput.value.length<20){
-        toDoInput.size=20;
+    if(toDoInput.value.length>=12&&toDoInput.value.length<40){
+        toDoInput.size=1.5*toDoInput.value.length+2;
+    } else if(toDoInput.value.length<12){
+        toDoFormSizeToInitial();
     }
+}
+
+function toDoFormSizeToInitial(){
+    toDoInput.size=20;
+}
+*/
+
+function toDoFormSizeControl(){
+        showElement(virtualSpan);
+        virtualSpan.innerText=toDoInput.value;
+        toDoInput.style.width=`${virtualSpan.clientWidth+10}px`;
+        removeElement(virtualSpan);
 }

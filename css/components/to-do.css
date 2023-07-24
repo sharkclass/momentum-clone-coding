@@ -16,18 +16,35 @@ li.completed span{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width:80%;
 }
 
 #major-todo{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 #todo-list{
-    font-size:40px;
+    width:70%;
+    font-size:30px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#todo-list li{
+    max-width:100%;
+    justify-content: space-between;
 }
 
 #todo-list span{
     margin-left:30px;
+    line-height: 100.5%;
+    overflow: hidden;
+}
+
+/*clock-screen에서의 디자인*/
+
+.clock-screen #todo-list li span{
+    white-space: nowrap;    
 }
 
 /*todo list의 삭제 아이콘*/
@@ -36,4 +53,51 @@ li.completed span{
     color:var(--non-selected-element);
     border:none;
     margin:0 5px;
+    align-items: center;
+}
+
+
+/*todo-screen에서의 디자인*/
+
+.todo-screen #main-title{
+    margin-top:60px;
+}
+
+.todo-screen #center-content{
+    height:33%;
+    margin:0;
+}
+
+.todo-screen #todo-container{
+    height:64%;
+    padding-bottom:5%;
+}
+
+.todo-screen #todo-container #todo-form{
+    height:20%;
+    justify-content: flex-start;
+}
+
+.todo-screen #todo-container #todo-list{
+    height:80%;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.todo-screen #todo-container #todo-list li{
+    font-size:30px;
+    margin:1% 0 ;
+    line-height: 100.5%;
+    
+}
+
+#virtual-span{
+    font-size: 30px;
+    padding:0px 4px;
+    white-space: nowrap;  
+}
+
+#main-content,
+#main-content *{
+    box-sizing: border-box; /*border box는 한 번만 적용되기 때문에 모든 크기의 계산이 끝나고 적용되게 해야 함!!!*/
 }

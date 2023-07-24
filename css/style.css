@@ -31,8 +31,9 @@ h3{
     text-align: center;
     border:none;
     border-bottom: 2px solid black;
-    font-size: 40px;
-    width:100%;
+    font-size: 30px;
+    padding:1px 4px;
+    min-width:120%;
 }
 
 .input:focus{

@@ -44,6 +44,7 @@ function paintGreetings(username){
     //showElement(quoteContainer);
     showElement(mainTitle);
     showElement(toDoContainer);
+    showElement(mainContent)
 }
 
 const savedUsername=localStorage.getItem(USERNAME_KEY);
