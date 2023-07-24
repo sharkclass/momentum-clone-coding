@@ -37,8 +37,6 @@ function refreshToDos(event,ui){
     //움직인 todo가 n 번째 child로 이동했는지 todo-list에서 알아내기
     //Array.from을 통해 ul.children을 호출해 유사 배열을 부르고, 거기서 indexOf를 이용해 li의 순서를 구함.
     const movedTo=Array.from(li.parentNode.children).indexOf(li);
-    console.dir(li.parentElement)
-    console.dir(li);
     //이동한 toDo movedFrom 변수로 구하기
     const toDo=toDos[movedFrom];
     //toDos에서 m 번째에 움직인 todo 제거하기
