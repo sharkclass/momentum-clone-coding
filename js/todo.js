@@ -177,6 +177,14 @@ function completeToDo(event){
     //isAllToDosCompleted();
 }
 
+//to do list의 드래그 기능
+$(".sortable").sortable({
+    axis:"y",
+    stop: function (event,ui){
+        refreshToDos(event,ui);
+    }
+});
+
 //input의 사이즈가 입력한 글자에 맞춰 자동으로 늘어나게 하는 함수
 
 toDoFormSizeControl();
@@ -186,6 +194,6 @@ toDoInput.addEventListener("keyup",toDoFormSizeControl);
 function toDoFormSizeControl(){
         showElement(virtualSpan);
         virtualSpan.innerText=toDoInput.value;
-        toDoInput.style.width=`${virtualSpan.clientWidth+10}px`;
+        toDoInput.style.width=`${virtualSpan.clientWidth}px`;
         removeElement(virtualSpan);
 }
