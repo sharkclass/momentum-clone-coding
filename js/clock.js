@@ -1,4 +1,5 @@
 const mainContent=document.querySelector("#main-content");
+const greetingMessages=document.querySelector("#greeting-messages");
 
 const CLOCKSCREEN="clock-screen";
 
@@ -17,13 +18,38 @@ function getClock(){
 
 }
 
+//title의 button effect
+
+mainTitle.addEventListener("mouseover",titleConvertShowing);
+mainTitle.addEventListener("mouseout",titleConvertDisappering);
+
+function titleConvertShowing(){
+    if(mainContent.classList.contains(CLOCKSCREEN)){ //clock-screen
+        mainTitle.innerText="To Do";
+        clearInterval(clockInterval);
+    } else if(mainContent.classList.contains(TODOSCREEN)) { //todo-screen
+        mainTitle.innerText=(`${hours}:${minutes}`);
+    }
+}
+
+function titleConvertDisappering(){
+    if(mainContent.classList.contains(CLOCKSCREEN)){ //clock-screen
+        getClock();
+        clockInterval=setInterval(getClock, 1000);
+    } else if(mainContent.classList.contains(TODOSCREEN)) { //todo-screen
+        mainTitle.innerText="To Do";
+    }
+}
+
+//title converting
 function titleConverting(){
     if(mainContent.classList.contains(CLOCKSCREEN)){ //clock->todo
         mainContent.classList.remove(CLOCKSCREEN);
         mainContent.classList.add(TODOSCREEN);
+
         mainTitle.innerText="To Do";
         //greeting이랑 todo container 지우기
-        removeElement(greeting);
+        removeElement(greetingMessages);
         majorToDo.innerText="Write a To Do here";
 
         toDoList.classList.remove(SUMMARIZED);
@@ -31,7 +57,8 @@ function titleConverting(){
     } else{ //todo->clock
         mainContent.classList.remove(TODOSCREEN);
         mainContent.classList.add(CLOCKSCREEN);
-        showElement(greeting);
+
+        showElement(greetingMessages);
         majorToDo.innerText="What is your main goal?";
 
         toDoList.classList.add(SUMMARIZED);
@@ -44,4 +71,4 @@ function titleConverting(){
 }
 
 getClock();
-setInterval(getClock, 1000);
+let clockInterval=setInterval(getClock, 1000);

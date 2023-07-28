@@ -1,6 +1,7 @@
 const loginForm=document.querySelector("#login-form");
 const loginInput=document.querySelector("#login-form input");
 const greeting=document.querySelector("#greeting");
+const greetingUsername=document.querySelector("#greeting__username");
 
 const HIDDEN_CLASSNAME="hidden";// upper case variable only uses as saving variable with only string
 const USERNAME_KEY="username";
@@ -9,25 +10,28 @@ const USERNAME_KEY="username";
 const weatherContainer=document.querySelector("#weather-container")
 //const quoteContainer=document.querySelector("#quote-container");
 
+greetingUsername.innerText=localStorage.getItem(USERNAME_KEY);
+
 function onLoginSubmit(event){
     event.preventDefault(); //preventDefault stops default behavior of browser and javascript gives event value to first argument of fuction for free when addEventListener activates.
     const username=loginInput.value;
+    greetingUsername.innerText=username;
     localStorage.setItem(USERNAME_KEY,username); //browser에 값을 저장해 새로고침해도 값을 기억하도록 함. (key,value)형식으로 작성
     paintGreetings(username);
     loginForm.classList.add(REMOVED);
 }
 
-function greetingMessage(username){
+function greetingMessage(){
     if(hours>=06&&hours<10){
-        return `Good Morning, ${username}`;
+        return `Good Morning, `;
     } else if(hours>=10&&hours<17){
-        return `Have a nice day, ${username}`;
+        return `Have a nice day, `;
     } else if(hours>=17&&hours<24){
-        return `Good evening, ${username}`;
+        return `Good evening, `;
     } else if(hours>=0&&hours<06){
-        return `Keep it up! ${username}`;
+        return `Keep it up! `;
     } else {
-        return `Greeting, ${username}`;
+        return `Greeting, `;
     }
     //Good Morning, Have a nice day, Good Evening, Keep it up!
     //0600~1000, 1000~1700, 1700~2400, 2400~0600
@@ -36,7 +40,7 @@ function greetingMessage(username){
 //다른 요소들을 등장하게 하는 함수
 function paintGreetings(username){
     removeElement(loginForm);
-    greeting.innerText=greetingMessage(username);
+    greeting.innerText=greetingMessage();
     showElement(greeting);
     showElement(weatherContainer);
     showElement(toDoContainer);
@@ -61,4 +65,4 @@ function removeGreetings(){
     localStorage.removeItem(USERNAME_KEY);
 }
 
-greeting.addEventListener("click", removeGreetings);//greeting을 클릭하면 이름을 지우고 처음 화면으로 돌아가도록 함.
+greetingUsername.addEventListener("click", removeGreetings);//greeting을 클릭하면 이름을 지우고 처음 화면으로 돌아가도록 함.

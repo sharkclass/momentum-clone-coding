@@ -16,4 +16,9 @@
 #greeting{
     box-sizing: border-box;
     justify-content: center;
+    white-space: pre;
+}
+
+#greeting__username{
+    font-size:60px;
 }

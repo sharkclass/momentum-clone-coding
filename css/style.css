@@ -39,3 +39,7 @@ h3{
 .input:focus{
     outline:none;
 }
+
+.button{
+    cursor:pointer;
+}

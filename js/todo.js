@@ -5,6 +5,7 @@ const toDoList=document.querySelector("#todo-list");
 const toDoContainer=document.querySelector("#todo-container"); 
 const majorToDo=document.querySelector("#major-todo");
 const virtualSpan=document.querySelector("#virtual-span");
+
 //const toDoCompletedMessage=document.querySelector("#todo-completed-message");
 
 const TODOS_KEY="todos";
@@ -49,7 +50,7 @@ function refreshToDos(event,ui){
 function paintToDo(newToDoObj){
     const li =document.createElement("li");
     li.id=newToDoObj.id;
-    li.classList.add("nonselectable","todo","flex");
+    li.classList.add("nonselectable","todo","flex","button");
     const span=document.createElement("span");
     span.innerText=newToDoObj.text;
     const button=document.createElement("i");
@@ -197,3 +198,5 @@ function toDoFormSizeControl(){
         toDoInput.style.width=`${virtualSpan.clientWidth}px`;
         removeElement(virtualSpan);
 }
+
+
