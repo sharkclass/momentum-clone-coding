@@ -11,6 +11,8 @@ const weatherContainer=document.querySelector("#weather-container")
 //const quoteContainer=document.querySelector("#quote-container");
 
 greetingUsername.innerText=localStorage.getItem(USERNAME_KEY);
+greetingUsername.addEventListener("mouseover",userNameHover);
+greetingUsername.addEventListener("mouseout",userNameHover);
 
 function onLoginSubmit(event){
     event.preventDefault(); //preventDefault stops default behavior of browser and javascript gives event value to first argument of fuction for free when addEventListener activates.
@@ -19,6 +21,22 @@ function onLoginSubmit(event){
     localStorage.setItem(USERNAME_KEY,username); //browser에 값을 저장해 새로고침해도 값을 기억하도록 함. (key,value)형식으로 작성
     paintGreetings(username);
     loginForm.classList.add(REMOVED);
+    greetingUsername.addEventListener("mouseover",userNameHover);
+    greetingUsername.addEventListener("mouseout",userNameHover);
+}
+
+//username의 button effect
+
+function userNameHover(){
+    const username=localStorage.getItem(USERNAME_KEY);
+    if(greetingUsername.innerText==username){ 
+        greetingUsername.style.width=`${greetingUsername.offsetWidth}px`;
+        greetingUsername.innerText="Edit";
+        greetingUsername.classList.add(BUTTONHOVERED);
+    } else { 
+        greetingUsername.innerText=username;
+        greetingUsername.classList.remove(BUTTONHOVERED);
+    }
 }
 
 function greetingMessage(){

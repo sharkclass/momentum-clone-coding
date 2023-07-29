@@ -27,8 +27,10 @@ function titleConvertShowing(){
     if(mainContent.classList.contains(CLOCKSCREEN)){ //clock-screen
         mainTitle.innerText="To Do";
         clearInterval(clockInterval);
+        mainTitle.classList.add(BUTTONHOVERED);
     } else if(mainContent.classList.contains(TODOSCREEN)) { //todo-screen
         mainTitle.innerText=(`${hours}:${minutes}`);
+        mainTitle.classList.add(BUTTONHOVERED);
     }
 }
 
@@ -36,8 +38,10 @@ function titleConvertDisappering(){
     if(mainContent.classList.contains(CLOCKSCREEN)){ //clock-screen
         getClock();
         clockInterval=setInterval(getClock, 1000);
+        mainTitle.classList.remove(BUTTONHOVERED);
     } else if(mainContent.classList.contains(TODOSCREEN)) { //todo-screen
         mainTitle.innerText="To Do";
+        mainTitle.classList.remove(BUTTONHOVERED);
     }
 }
 

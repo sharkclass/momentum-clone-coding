@@ -43,3 +43,7 @@ h3{
 .button{
     cursor:pointer;
 }
+
+.button--hovered{
+    opacity:0.5;
+}

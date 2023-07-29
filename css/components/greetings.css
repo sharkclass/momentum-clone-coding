@@ -11,7 +11,10 @@
     padding-top:30px;
 }
 
-
+#greeting__username{
+    justify-content: center;
+    white-space: pre;
+}
 
 #greeting{
     box-sizing: border-box;

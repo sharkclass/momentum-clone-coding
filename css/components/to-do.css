@@ -45,6 +45,7 @@ li.completed span{
     margin-left:10px;
     line-height: 150%;
     overflow: hidden;
+    justify-content: center;
 }
 
 /*clock-screen에서의 디자인*/

@@ -14,6 +14,7 @@ const SORTABLE="sortable";
 const REMOVED="removed";
 const SUMMARIZED="summarized";
 const TODOSCREEN="todo-screen";
+const BUTTONHOVERED="button--hovered";
 
 let toDos=[];
 
@@ -53,6 +54,7 @@ function paintToDo(newToDoObj){
     li.classList.add("nonselectable","todo","flex","button");
     const span=document.createElement("span");
     span.innerText=newToDoObj.text;
+    span.classList.add("flex");
     const button=document.createElement("i");
     button.classList.add("fa-solid","fa-trash")
     button.addEventListener("click",deleteToDo);
@@ -60,9 +62,38 @@ function paintToDo(newToDoObj){
     li.appendChild(button);
     toDoList.appendChild(li);
     span.addEventListener("click", completeToDo);
+    span.addEventListener("mouseover",todoListHover);
+    span.addEventListener("mouseout",todoListHover);
 
     if(newToDoObj.isCompleted){
         li.classList.add(COMPLETED);
+    }
+}
+
+document.querySelectorAll("#todo-list span").forEach(element => {
+    element.addEventListener("mouseover",todoListHover);
+    element.addEventListener("mouseout",todoListHover);
+});
+
+
+//todo list의 button effect
+function todoListHover(event){
+    const span=event.target;
+    const li=span.parentElement;
+    const id=li.id;
+    if(span.innerText=="Complete"){ //mouseout when not completed
+        span.innerText=toDos[elementFinderWithId(toDos,id)].text;
+        span.classList.remove(BUTTONHOVERED);
+    } else if(span.classList.contains(BUTTONHOVERED)&&span.innerText!="completed"){//mouseout when completed
+        span.classList.remove(BUTTONHOVERED);
+        li.classList.add(COMPLETED);
+    } else if(!li.classList.contains(COMPLETED)){ //mouseover when not completed
+        span.style.width=`${span.offsetWidth}px`;
+        span.innerText="Complete";
+        span.classList.add(BUTTONHOVERED);
+    } else{//mouseover when completed
+        span.classList.add(BUTTONHOVERED);
+        li.classList.remove(COMPLETED);
     }
 }
 
