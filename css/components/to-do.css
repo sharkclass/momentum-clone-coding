@@ -57,12 +57,18 @@ li.completed span{
 /*todo list의 삭제 아이콘*/
 #todo-list i{
     font-size: 30px;
-    color:var(--non-selected-element);
     border:none;
     margin:0 5px;
     align-items: center;
 }
 
+.trash-can--hovered{
+    opacity:1;
+}
+
+.trash-can--not-hovered{
+    color:var(--non-selected-element);
+}
 
 /*todo-screen에서의 디자인*/
 

@@ -15,6 +15,8 @@ const REMOVED="removed";
 const SUMMARIZED="summarized";
 const TODOSCREEN="todo-screen";
 const BUTTONHOVERED="button--hovered";
+const TRASHCANHOVER="trash-can--hovered";
+const TRASHCANNOTHOVER="trash-can--not-hovered";
 
 let toDos=[];
 
@@ -56,8 +58,10 @@ function paintToDo(newToDoObj){
     span.innerText=newToDoObj.text;
     span.classList.add("flex");
     const button=document.createElement("i");
-    button.classList.add("fa-solid","fa-trash")
+    button.classList.add("fa-solid","fa-trash","trash-can--not-hovered")
     button.addEventListener("click",deleteToDo);
+    button.addEventListener("mouseover",trashCanHover);
+    button.addEventListener("mouseout",trashCanHover);
     li.appendChild(span);
     li.appendChild(button);
     toDoList.appendChild(li);
@@ -88,12 +92,26 @@ function todoListHover(event){
         span.classList.remove(BUTTONHOVERED);
         li.classList.add(COMPLETED);
     } else if(!li.classList.contains(COMPLETED)){ //mouseover when not completed
-        span.style.width=`${span.offsetWidth}px`;
+        span.style.width=`${span.offsetWidth+1}px`;
         span.innerText="Complete";
         span.classList.add(BUTTONHOVERED);
     } else{//mouseover when completed
         span.classList.add(BUTTONHOVERED);
         li.classList.remove(COMPLETED);
+    }
+}
+
+//trash can의 button effect
+
+function trashCanHover(event){
+    console.log("hi");
+    const button=event.target;
+    if(button.classList.contains(TRASHCANHOVER)){
+        button.classList.add(TRASHCANNOTHOVER);
+        button.classList.remove(TRASHCANHOVER);
+    } else{
+        button.classList.remove(TRASHCANNOTHOVER);
+        button.classList.add(TRASHCANHOVER);
     }
 }
 
