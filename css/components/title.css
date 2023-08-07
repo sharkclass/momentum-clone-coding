@@ -3,7 +3,14 @@
     justify-content: center;
     height: 100%;
     width:100%;
+    animation:fadein 1s;
+    transition:all 1s;
 }
+
+#main-content *{
+    transition:all 0.5s;
+}
+
 
 #center-content{
     display: flex;
@@ -15,8 +22,5 @@
 
 #main-title{
     margin:30px 0;
-}
-
-.clock-screen:hover{
-    
+    animation:fadein 1s;
 }

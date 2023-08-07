@@ -19,8 +19,14 @@ function onLoginSubmit(event){
     const username=loginInput.value;
     greetingUsername.innerText=username;
     localStorage.setItem(USERNAME_KEY,username); //browser에 값을 저장해 새로고침해도 값을 기억하도록 함. (key,value)형식으로 작성
-    paintGreetings(username);
-    loginForm.classList.add(REMOVED);
+
+    //fadeout animation
+    loginForm.style.opacity=0;
+    setTimeout(()=>{
+        loginForm.classList.add(REMOVED);
+        paintGreetings(username);
+    }  
+    ,1000);
     greetingUsername.addEventListener("mouseover",userNameHover);
     greetingUsername.addEventListener("mouseout",userNameHover);
 }
@@ -56,17 +62,22 @@ function greetingMessage(){
 }
 
 //다른 요소들을 등장하게 하는 함수
-function paintGreetings(username){
+function paintGreetings(){
     removeElement(loginForm);
     greeting.innerText=greetingMessage();
+
+    //fadein animation
     showElement(greeting);
-    showElement(weatherContainer);
-    showElement(toDoContainer);
-    showElement(toDoList);
-    //showElement(quoteContainer);
-    showElement(mainTitle);
-    showElement(toDoContainer);
-    showElement(mainContent)
+    showElement(mainContent);
+    setTimeout(()=>{
+        showElement(weatherContainer);
+        showElement(toDoContainer);
+        showElement(toDoList);
+        //showElement(quoteContainer);
+        showElement(mainTitle);
+        showElement(toDoContainer);
+    }  
+    ,2000);  
 }
 
 const savedUsername=localStorage.getItem(USERNAME_KEY);
