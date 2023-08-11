@@ -1,0 +1,16 @@
+/*keyfrmaes는 글로벌 함수라 여기에서만 정의하면 됨*/
+@keyframes fadein {
+    from{
+        transform: translateY(50px);
+        opacity:0;
+    }
+    to{
+        transform:none;
+        opacity: 1;
+    }
+}
+
+.clock-screen *,
+.todo-screen *{
+    transition:all 0.5s;
+}

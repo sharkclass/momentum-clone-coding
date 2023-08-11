@@ -20,6 +20,8 @@ const TRASHCANNOTHOVER="trash-can--not-hovered";
 
 let toDos=[];
 
+//animate test-good!!!
+
 function saveToDos(){
     localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
     submitOnlyMajorToDo();
@@ -27,10 +29,16 @@ function saveToDos(){
 
 function deleteToDo(event){
     const li = event.target.parentElement;//event("click")의 target에 들어가 parentElement를 찾고 remove()함수를 실행시켜 리스트를 제거함
-    li.remove();
+    li.animate([
+        {transform:"scale(1)"},
+        {transform:"scale(0)"}
+    ],300)
+    setTimeout(()=>{
+        li.remove();
     toDos=toDos.filter((toDo) => toDo.id !== parseInt(li.id));//toDos에서 button을 누른 li의 id와 같은 id를 가지고 있는 object를 찾아 제거함
     saveToDos();
-    toDoFormSizeControl();
+    toDoFormSizeControl(); 
+    },300)
 }
 
 //todo를 드래그하고 놓았을 때 html데이터를 localstorage에 저장하기 위해 html의 todolist를 js의 toDos에 저장하는 함수
@@ -104,7 +112,6 @@ function todoListHover(event){
 //trash can의 button effect
 
 function trashCanHover(event){
-    console.log("hi");
     const button=event.target;
     if(button.classList.contains(TRASHCANHOVER)){
         button.classList.add(TRASHCANNOTHOVER);
@@ -204,27 +211,36 @@ function isAllToDosCompleted(){
 function completeToDo(event){
     
     const li=event.target.parentElement;
+    const span=event.target;
 
-    li.classList.toggle(COMPLETED);
+    span.innerText="Completed!";
+    span.animate([
+        
+    ],500)
 
-    const orderOfToDo=elementFinderWithId(toDos,li.id);
-    const toDo=toDos[orderOfToDo];
+    setTimeout(()=>{
+        li.classList.toggle(COMPLETED);
 
-    toDo.isCompleted=!toDo.isCompleted;
-    if(!toDo.isCompleted){
-        let tmp=toDo;
-        toDos.splice(orderOfToDo,1);
-        toDos.unshift(tmp);
-    }else{
-        let tmp=toDo;
-        toDos.splice(orderOfToDo,1);
-        toDos.push(tmp);
-    }
+        const orderOfToDo=elementFinderWithId(toDos,li.id);
+        const toDo=toDos[orderOfToDo];
 
-    localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
-    toDoList.innerHTML="";
-    showToDoFromLocalStorage();
-    //isAllToDosCompleted();
+        toDo.isCompleted=!toDo.isCompleted;
+        if(!toDo.isCompleted){
+            let tmp=toDo;
+            toDos.splice(orderOfToDo,1);
+            toDos.unshift(tmp);
+        }else{
+            let tmp=toDo;
+            toDos.splice(orderOfToDo,1);
+            toDos.push(tmp);
+        }
+
+        localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
+        toDoList.innerHTML="";
+        showToDoFromLocalStorage();
+        //isAllToDosCompleted();
+    },500)
+    
 }
 
 //to do list의 드래그 기능

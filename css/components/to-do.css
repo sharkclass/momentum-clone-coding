@@ -36,17 +36,23 @@ li.completed span{
     list-style-position: inside;
 }
 
+#todo-list li::selection{
+    transition:none;
+}
+
 .todo-screen #todo-list li::before{
     content:'▫';
     display:inline-block;
 }
 
 #todo-list span{
+    min-width:164px;
     font-size:25px;
     margin-left:10px;
     line-height: 150%;
     overflow: hidden;
     justify-content: center;
+    transition:opacity 0s;
 }
 
 /*clock-screen에서의 디자인*/
@@ -106,7 +112,6 @@ li.completed span{
 
 #virtual-span{
     font-size: 30px;
-    padding:;
     white-space: nowrap;  
 }
 

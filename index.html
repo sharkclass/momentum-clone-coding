@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="height=device-height, initial-scale=1.0">
 
+    <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
@@ -24,7 +25,7 @@
 <body>
     <form id="login-form" class="removed login-form">
         <h1 id="welcome-message">Nice to meet you.</h1>
-        <input id="name-input" class="input" required maxlength=20 type="text" placeholder="Please, tell me your name.">
+        <input id="name-input" class="input" required maxlength=20 type="text" placeholder="Please, tell me your name." spellcheck='false'>
     </form>
 
     <div id="weather-container" class="removed flex">
@@ -51,7 +52,7 @@
         <div id="todo-container" class="removed flex">
             <form id="todo-form" class=" flex">
                 <h3 id="major-todo">What is your main goal?</h3>
-                <input id="todo-input" class="input" required type="text" style="max-width:80vw;">
+                <input id="todo-input" class="input" required type="text" style="max-width:80vw;"spellcheck='false'>
             </form>    
             <!--<span id="todo-completed-message" class="removed">Completed!</span>-->
             <ul id="todo-list" class="removed summarized flex sortable"></ul>

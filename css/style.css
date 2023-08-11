@@ -46,7 +46,6 @@ h3{
     background-color: rgba(0,0,0,0);
     color:white;
     font-family: 'lanapixel';
-
 }
 
 .input:focus{
@@ -55,6 +54,7 @@ h3{
 
 .button{
     cursor:pointer;
+    transition:opacity 0s;
 }
 
 .button--hovered{
