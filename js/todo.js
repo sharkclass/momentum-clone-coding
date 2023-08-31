@@ -91,12 +91,18 @@ document.querySelectorAll("#todo-list span").forEach(element => {
 
 
 //todo list의 button effect
+
+function isLiCompleted(li){
+    console.log(`completed:${toDos[elementFinderWithId(toDos,li.id)].isCompleted}`);
+    return toDos[elementFinderWithId(toDos,li.id)].isCompleted;
+}
+
 function todoListMouseOver(event){
     const span=event.target;
     const li=span.parentElement;
     const id=li.id;
-    if(!li.classList.contains("ui-sortable-helper")){
-        if(!li.classList.contains(COMPLETED)){ //mouseover when not completed
+    isLiCompleted(li);
+        if(!isLiCompleted(li)){ //mouseover when not completed
             span.style.width=`${span.offsetWidth}px`;
             tmpInnerText=span.innerText;
             span.innerText="Complete";
@@ -105,22 +111,20 @@ function todoListMouseOver(event){
             span.classList.add(BUTTONHOVERED);
             li.classList.remove(COMPLETED);
         }
-    }
+    
 }
 
 function todoListMouseOut(event){
     const span=event.target;
     const li=span.parentElement;
     const id=li.id;
-    if(!li.classList.contains("ui-sortable-helper")){
-    if(span.innerText=="Complete"){ //mouseout when not completed
+    if(!isLiCompleted(li)){ //mouseout when not completed
         span.innerText=toDos[elementFinderWithId(toDos,id)].text;
         span.classList.remove(BUTTONHOVERED);
     }
-    if(span.classList.contains(BUTTONHOVERED)&&span.innerText!="completed"){//mouseout when completed
+    else{//mouseout when completed
         span.classList.remove(BUTTONHOVERED);
         li.classList.add(COMPLETED);
-    }
     }
 }
 
@@ -272,7 +276,6 @@ $(".sortable").sortable({
     // 항목을 드래그할 때 다른 항목들이 부드럽게 움직이게 함.
     'placeholder': 'marker',
     start: function(e, ui) {
-        console.log(ui)
         startIndex = ui.placeholder.index();
         uiHeight = ui.item.outerHeight(true);//get offset incl margin
 
