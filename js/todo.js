@@ -17,6 +17,7 @@ const TODOSCREEN="todo-screen";
 const BUTTONHOVERED="button--hovered";
 const TRASHCANHOVER="trash-can--hovered";
 const TRASHCANNOTHOVER="trash-can--not-hovered";
+const SORTTING="sortting";
 
 let toDos=[];
 
@@ -44,6 +45,7 @@ function deleteToDo(event){
 //todo를 드래그하고 놓았을 때 html데이터를 localstorage에 저장하기 위해 html의 todolist를 js의 toDos에 저장하는 함수
 function refreshToDos(event,ui){
     const li = ui.item[0];
+    console.log(li);
     //움직인 todo가 원래 m 번째 array인지 toDos에서 알아내기-findIndex
     const movedFrom=toDos.findIndex((toDo)=>toDo.id == parseInt(li.id));
     //움직인 todo가 n 번째 child로 이동했는지 todo-list에서 알아내기
@@ -74,8 +76,8 @@ function paintToDo(newToDoObj){
     li.appendChild(button);
     toDoList.appendChild(li);
     span.addEventListener("click", completeToDo);
-    span.addEventListener("mouseover",todoListHover);
-    span.addEventListener("mouseout",todoListHover);
+    span.addEventListener("mouseover",todoListMouseOver);
+    span.addEventListener("mouseout",todoListMouseOut);
 
     if(newToDoObj.isCompleted){
         li.classList.add(COMPLETED);
@@ -83,29 +85,42 @@ function paintToDo(newToDoObj){
 }
 
 document.querySelectorAll("#todo-list span").forEach(element => {
-    element.addEventListener("mouseover",todoListHover);
-    element.addEventListener("mouseout",todoListHover);
+    element.addEventListener("mouseover",todoListMouseOver);
+    element.addEventListener("mouseout",todoListMouseOut);
 });
 
 
 //todo list의 button effect
-function todoListHover(event){
+function todoListMouseOver(event){
     const span=event.target;
     const li=span.parentElement;
     const id=li.id;
+    if(!li.classList.contains("ui-sortable-helper")){
+        if(!li.classList.contains(COMPLETED)){ //mouseover when not completed
+            span.style.width=`${span.offsetWidth}px`;
+            tmpInnerText=span.innerText;
+            span.innerText="Complete";
+            span.classList.add(BUTTONHOVERED);
+        } else{//mouseover when completed
+            span.classList.add(BUTTONHOVERED);
+            li.classList.remove(COMPLETED);
+        }
+    }
+}
+
+function todoListMouseOut(event){
+    const span=event.target;
+    const li=span.parentElement;
+    const id=li.id;
+    if(!li.classList.contains("ui-sortable-helper")){
     if(span.innerText=="Complete"){ //mouseout when not completed
         span.innerText=toDos[elementFinderWithId(toDos,id)].text;
         span.classList.remove(BUTTONHOVERED);
-    } else if(span.classList.contains(BUTTONHOVERED)&&span.innerText!="completed"){//mouseout when completed
+    }
+    if(span.classList.contains(BUTTONHOVERED)&&span.innerText!="completed"){//mouseout when completed
         span.classList.remove(BUTTONHOVERED);
         li.classList.add(COMPLETED);
-    } else if(!li.classList.contains(COMPLETED)){ //mouseover when not completed
-        span.style.width=`${span.offsetWidth+1}px`;
-        span.innerText="Complete";
-        span.classList.add(BUTTONHOVERED);
-    } else{//mouseover when completed
-        span.classList.add(BUTTONHOVERED);
-        li.classList.remove(COMPLETED);
+    }
     }
 }
 
@@ -207,23 +222,22 @@ function isAllToDosCompleted(){
 */
 
 //isAllToDosCompleted();
+var tmpInnerText;
 
 function completeToDo(event){
     
     const li=event.target.parentElement;
     const span=event.target;
 
-    span.innerText="Completed!";
-    span.animate([
-        
-    ],500)
+    li.classList.toggle(COMPLETED);
 
+    const orderOfToDo=elementFinderWithId(toDos,li.id);
+    const toDo=toDos[orderOfToDo];
+
+    if(!toDo.isCompleted){
+        span.innerText="Completed!";
+    }
     setTimeout(()=>{
-        li.classList.toggle(COMPLETED);
-
-        const orderOfToDo=elementFinderWithId(toDos,li.id);
-        const toDo=toDos[orderOfToDo];
-
         toDo.isCompleted=!toDo.isCompleted;
         if(!toDo.isCompleted){
             let tmp=toDo;
@@ -236,6 +250,9 @@ function completeToDo(event){
         }
 
         localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
+
+        //complete된 todo가 맨 아래로 내려가는 애니메이션 만들기 (jquery 이용)
+
         toDoList.innerHTML="";
         showToDoFromLocalStorage();
         //isAllToDosCompleted();
@@ -244,10 +261,73 @@ function completeToDo(event){
 }
 
 //to do list의 드래그 기능
+var startIndex, changeIndex, uiHeight;
+
 $(".sortable").sortable({
     axis:"y",
     stop: function (event,ui){
         refreshToDos(event,ui);
+    },
+
+    // 항목을 드래그할 때 다른 항목들이 부드럽게 움직이게 함.
+    'placeholder': 'marker',
+    start: function(e, ui) {
+        console.log(ui)
+        startIndex = ui.placeholder.index();
+        uiHeight = ui.item.outerHeight(true);//get offset incl margin
+
+        ui.item.nextAll('li:not(.marker)').css({
+            transform: 'translateY(' +uiHeight+ 'px)'
+        });
+
+        ui.item[0].firstChild.innerText=toDos[elementFinderWithId(toDos,ui.item[0].id)].text
+        //ui.item[0].css("background-color","black");
+
+        ui.item.css("backdrop-filter", 'blur(10px)',);
+        ui.item.css("box-shadow", '2px 7px 15px 8px rgba(0,0,0,0.3)',);
+
+        ui.placeholder.css({
+            height: 0,
+            padding: 0
+        });
+    },
+    change: function(e, ui) {
+
+        changeIndex = ui.placeholder.index();
+
+
+        if (startIndex > changeIndex) {
+
+            var slice = $('ul li').slice(changeIndex, $('ul li').length);
+
+            slice.not('.ui-sortable-helper').each(function() {
+                var item = $(this);
+                item.css({
+                    transform: 'translateY(' +uiHeight+ 'px)'
+                });
+            });
+
+        } else if (startIndex < changeIndex) {
+
+            var slice = $('ul li').slice(startIndex, changeIndex);
+
+            slice.not('.ui-sortable-helper').each(function() {
+                var item = $(this);
+                item.css({
+                    transform: 'translateY(0px)',
+                    
+                });
+            });
+        }
+
+        startIndex = changeIndex
+    },
+    stop: function(e, ui) {
+        $('.todo').css({
+            transform: 'translate(0)',
+        });
+        ui.item.css("backdrop-filter", '',);
+        ui.item.css("box-shadow", '',);
     }
 });
 

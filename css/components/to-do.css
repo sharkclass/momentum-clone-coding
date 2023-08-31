@@ -31,17 +31,20 @@ li.completed span{
 }
 
 #todo-list li {
-    max-width:100%;
+    width:100%;
     justify-content: center;
     list-style-position: inside;
+    transition:transform .2s;
+    border-radius: 5px;
 }
 
-#todo-list li::selection{
-    transition:none;
+#todo-list li .list--hovered{
+    border-radius: 30%;
 }
+
 
 .todo-screen #todo-list li::before{
-    content:'▫';
+    content:'';
     display:inline-block;
 }
 
@@ -106,13 +109,22 @@ li.completed span{
 
 .todo-screen #todo-container #todo-list li{
     font-size:30px;
-    margin:1% 0 ;
+    padding:1% 0 ;
     line-height: 100.5%;
 }
 
 #virtual-span{
     font-size: 30px;
     white-space: nowrap;  
+}
+
+.marker{
+    opacity:0.0;
+    transition:.2s height ;
+}
+
+.ui-sortable-helper {
+    transform:scale(.9)
 }
 
 #main-content,
