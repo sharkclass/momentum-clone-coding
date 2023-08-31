@@ -20,6 +20,10 @@ li.completed span{
     max-width:80%;
 }
 
+#todo-input{
+    transition:none;
+}
+
 #major-todo{
     margin-bottom: 20px;
 }
