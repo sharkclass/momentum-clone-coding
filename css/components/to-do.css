@@ -30,6 +30,19 @@ li.completed span{
     flex-direction: column;
 }
 
+#todo-list::-webkit-scrollbar{
+    width:10px;
+}
+
+#todo-list::-webkit-scrollbar-thumb{
+    background:white;
+}
+
+#todo-list::-webkit-scrollbar-thumb:hover{
+    cursor:pointer;
+    opacity:0.5;
+}
+
 #todo-list li {
     width:100%;
     justify-content: center;
